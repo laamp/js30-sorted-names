@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Sort Without Articles</title>
 </head>
+
 <body>
 
   <style>
     body {
       margin: 0;
       font-family: sans-serif;
-      background: url("https://source.unsplash.com/nDqA4d5NL0k/2000x2000");
+      background: url("https://source.unsplash.com/NYrVisodQ2M/2000x2000");
       background-size: cover;
       display: flex;
       align-items: center;
@@ -26,12 +28,12 @@
       padding: 0;
       box-shadow: 0 0 0 20px rgba(0, 0, 0, 0.05);
     }
-    
+
     #bands li {
       border-bottom: 1px solid #efefef;
       padding: 20px;
     }
-    
+
     #bands li:last-child {
       border-bottom: 0;
     }
@@ -45,11 +47,40 @@
 
   <ul id="bands"></ul>
 
-<script>
-const bands = ['The Plot in You', 'The Devil Wears Prada', 'Pierce the Veil', 'Norma Jean', 'The Bled', 'Say Anything', 'The Midway State', 'We Came as Romans', 'Counterparts', 'Oh, Sleeper', 'A Skylit Drive', 'Anywhere But Here', 'An Old Dog'];
+  <script>
+    const bands = ['The Plot in You', 'The Devil Wears Prada', 'Pierce the Veil', 'Norma Jean', 'The Bled',
+      'Say Anything', 'The Midway State', 'We Came as Romans', 'Counterparts', 'Oh, Sleeper', 'A Skylit Drive',
+      'Anywhere But Here', 'An Old Dog'
+    ];
 
+    const bands2 = [
+      'Nine Inch Nails',
+      'Queens of the Stone Age',
+      'Rammstein',
+      'Pearl Jam',
+      'Soundgarden',
+      'Napalm Death',
+      'Wu-Tang Clan',
+      'Run the Jewels',
+      'Rage Against the Machine',
+      'The Chemical Brothers',
+      'A Tribe Called Quest',
+      'Gang Starr',
+      'Beastie Boys'
+    ];
 
-</script>
+    function strip(name) {
+      return name.replace(/^(a |the |an )/i, '').trim();
+    }
+
+    const sortedNames = bands2.sort((x, y) => strip(x) > strip(y) ? 1 : -1);
+
+    console.log(sortedNames);
+
+    document.querySelector('#bands').innerHTML = sortedNames.map(band => `<li>${band}</li>`).join('');
+
+  </script>
 
 </body>
+
 </html>
